@@ -26,7 +26,80 @@ status InitLinkList(LinkList *L)
 }
 
 //insert node
-status InsertNode(LinkList *L,int i)
+//在L中第i个位置插入元素e
+status InsertNode(LinkList *L,int i,int e)
 {
-    
+    int j;
+    LinkList p,s;
+
+    p = *L;
+    j = 1;
+
+    while(p && j<i)
+    {
+        p = p->next;
+        ++j;
+    }
+
+    if(!p || j>i)
+        return FALSE;
+
+    s = (LinkList)malloc(sizeof(LinkNode));
+    s->data = e;
+    s->next = p->next;
+    p->next = s;
+
+    (*L)->data++;
+
+    return TRUE;
 }
+
+//删除L中第i个位置的元素，值返回到e
+status DeleteNode(LinkList *L, int i,int e)
+{
+    int j;
+    LinkList p,n;
+
+    p = *L;
+    j = 1;
+
+    while(p && j<i)
+    {
+        p = p->next;
+        ++j;
+    }
+
+    if(!p || j>i)
+        return FALSE;
+
+    n = p->next;
+    e = n->data;
+    p->next = n->next;
+
+    (*L)->data--;
+
+    return TRUE;
+}
+
+//输出包括头节点在内的所有元素的值
+status PrintNode(LinkList L)
+{
+    int i=0;
+    LinkList cur;
+    
+    cur = L;
+    if(!cur->data)
+        return FALSE;
+
+    while(i <= L->data)
+    {
+        printf("%d ",cur->data);
+        cur = cur->next;
+        i++;
+    }
+    printf("\n");
+
+    return TRUE;
+}
+
+

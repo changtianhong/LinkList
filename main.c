@@ -11,13 +11,21 @@
 
 void main()
 {
+    int i,j=0;
     LinkList L = NULL;
     status status_init;
     
     status_init = InitLinkList(&L);  
-    
     printf("Init status is %d\n",status_init);
     
+    printf("输入插入元素数量: ");
+    scanf("%d",&i);
+    while(j++ < i)
+        status_init &= InsertNode(&L,j,j); 
+    printf("Init status is %d\n",status_init);
+    
+    status_init = PrintNode(L); 
+    printf("Init status is %d\n",status_init);
 
 }
 

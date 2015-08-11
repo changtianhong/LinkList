@@ -28,6 +28,13 @@ typedef struct node
 
 //init empty link list
 OPE_EXT status InitLinkList(LinkList *L);
+//insert node
+//在L中第i个位置插入元素e
+OPE_EXT status InsertNode(LinkList *L,int i,int e);
+//删除L中第i个位置的元素，值返回到e
+OPE_EXT status DeleteNode(LinkList *L, int i,int e);
+//输出包括头节点在内的所有元素的值
+OPE_EXT status PrintNode(LinkList L);
 
 
 #endif
